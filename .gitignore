@@ -1,0 +1,2 @@
+# Ignore Firebase Service Account Key
+config/serviceAccountKey.json
