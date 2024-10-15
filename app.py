@@ -109,5 +109,17 @@ def create_department(user_id):
     except Exception as e:
         return jsonify({"error": str(e)}),500
     
+@app.route('/api/user/<user_id>/department', methods=['GET'])
+def get_departments(user_id):
+    try:
+        document_ref = db.collection('users').document(user_id).collection('departments')
+        departments = document_ref.stream()
+        department_list = []
+        for department in departments:
+            department_list.append({**department.to_dict(),"id":department.id})
+        return jsonify(department_list), 200
+    except Exception as e:
+        return jsonify({'error':str(e)}),500
+    
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
