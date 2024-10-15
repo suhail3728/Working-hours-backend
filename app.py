@@ -3,71 +3,111 @@ from flask_cors import CORS
 import firebase_admin
 from firebase_admin import credentials, firestore
 
+
+
 # Initialize Firebase
 cred = credentials.Certificate("config/serviceAccountKey.json")
 firebase_admin.initialize_app(cred)
 
 # Get Firestore client
 db = firestore.client()
-
-# Create a Flask application instance
 app = Flask(__name__)
-
-# Enable CORS for all routes
 CORS(app)
+
+
 
 @app.route('/api/hello', methods=['GET'])
 def hello():
-    return jsonify({"message": "Hello from Flask milk pizza hashireeeee!"})
+    return jsonify({"message":  "hello"})
 
-@app.route('/api/items', methods=['POST'])
-def create_item():
+@app.route('/api/getuser/<user_id>', methods= ['GET'])
+
+def getUser(user_id):
+
     try:
-        item = request.json
-        doc_ref = db.collection('items').add(item)
-        return jsonify({"id": doc_ref[1].id, "message": "Item created successfully"}), 201
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
 
-@app.route('/api/items', methods=['GET'])
-def read_items():
-    try:
-        all_items = [{"id": doc.id, **doc.to_dict()} for doc in db.collection('items').stream()]
-        return jsonify(all_items), 200
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+        user_ref = db.collection('users').document(user_id)
+        doc = user_ref.get()
 
-@app.route('/api/items/<item_id>', methods=['GET', 'PUT', 'DELETE'])
-def handle_item(item_id):
-    if item_id == 'undefined':
-        return jsonify({"error": "Invalid item ID"}), 400
-
-    item_ref = db.collection('items').document(item_id)
+        if doc.exists:
+            user_data = doc.to_dict()
+            return jsonify(user_data), 200
+        else:
+            return jsonify({"error": "User not found"}), 404
+        
     
-    if not item_ref.get().exists:
-        return jsonify({"error": "Item not found"}), 404
+    except Exception as e:
+         print(f"Error getting users: {str(e)}")
+         return jsonify({"error": str(e)}), 500
+   
 
-    if request.method == 'GET':
-        try:
-            item = item_ref.get()
-            return jsonify({"id": item.id, **item.to_dict()}), 200
-        except Exception as e:
-            return jsonify({"error": str(e)}), 500
 
-    elif request.method == 'PUT':
-        try:
-            item = request.json
-            item_ref.update(item)
-            return jsonify({"message": "Item updated successfully"}), 200
-        except Exception as e:
-            return jsonify({"error": str(e)}), 500
 
-    elif request.method == 'DELETE':
-        try:
-            item_ref.delete()
-            return jsonify({"message": "Item deleted successfully"}), 200
-        except Exception as e:
-            return jsonify({"error": str(e)}), 500
 
+
+@app.route('/api/user', methods=['POST'])
+def create_user():
+    try:
+
+
+  
+        user_data = request.json
+        name = user_data.get('name', '')
+        email = user_data.get('email')
+        user_id = user_data.get('userId')
+        business = user_data.get('business', '')
+        mobile_number = user_data.get('mobileNumber', '')
+        position = user_data.get('position', '')
+        address = user_data.get('address', '')  
+        business_type = user_data.get('businessType', '')  
+        num_of_employees = user_data.get('numberOfEmployees', 0)
+        
+        # Print the extracted values
+        print(f"Email: {email}")
+        print(f"User ID: {user_id}")
+        
+        if not email or not user_id:
+            return jsonify({'error': 'Missing required fields'}), 400
+      
+        doc_ref = db.collection('users').document(user_id)
+        doc_ref.set({
+            'email': email,
+            'userId': user_id,
+            'name': name,
+            'business':business,
+            'business_type': business_type,
+            'mobilenumber':mobile_number,
+            'positon': position,
+            'address': address,
+            'numofemploys': num_of_employees,
+            'timestamp': firestore.SERVER_TIMESTAMP
+        })
+        
+        
+        return jsonify({'message': 'User data stored successfully'}), 200
+
+        
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+    
+
+@app.route('/api/user/<user_id>/department', methods=['POST'])
+def create_department(user_id):
+    try:
+        department_data =  request.json
+        department_name = department_data.get('name')
+        print(f"department:{department_name}")
+        if not department_name:
+            return jsonify({'error':'Missing department name'}),400
+        
+        department_ref = db.collection('users').document(user_id).collection('departments').document()
+        department_ref.set({
+            'name': department_name,
+            'timestamp': firestore.SERVER_TIMESTAMP
+        })
+        return jsonify({'message': 'Yahoo department created', 'id': department_ref.id})
+    except Exception as e:
+        return jsonify({"error": str(e)}),500
+    
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
