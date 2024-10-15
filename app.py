@@ -147,5 +147,44 @@ def get_role(user_id, department_id):
     except Exception as e:
         return jsonify({'error': str(e)}),500
     
+@app.route('/api/user/<user_id>/employee', methods=['POST'])
+def create_employee(user_id):
+    try:
+        employee_data = request.json
+        email = employee_data.get('email')
+        name = employee_data.get('name')
+        department_id = employee_data.get('department_id')
+        role = employee_data.get('role')
+
+        if not email or not name:
+            return jsonify({'error': 'Missing required fields'}), 400
+
+        employee_ref = db.collection('users').document(user_id).collection('employees').document()
+        employee_ref.set({
+            'email': email,
+            'name': name,
+            'department_id': department_id,
+            'role': role,
+            'timestamp': firestore.SERVER_TIMESTAMP
+        })
+
+        return jsonify({'message': 'Employee created successfully', 'employee_id': employee_ref.id}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+    
+@app.route('/api/<user_id>/employee', methods=['GET'])
+def get_employee(user_id):
+    try:
+        document_ref = db.collection('users').document(user_id).collection('employees')
+        employees = document_ref.stream()
+        employees_list = []
+        for employee in employees:
+            employees_list.append({**employee.to_dict(), "id": employee.id})
+        return jsonify(employees_list),200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+    
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
