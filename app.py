@@ -109,7 +109,7 @@ def create_department(user_id):
     except Exception as e:
         return jsonify({"error": str(e)}),500
     
-@app.route('/api/user/<user_id>/department', methods=['GET'])
+@app.route('/api/get_departments/<user_id>/departments', methods=['GET'])
 def get_departments(user_id):
     try:
         document_ref = db.collection('users').document(user_id).collection('departments')
@@ -120,6 +120,32 @@ def get_departments(user_id):
         return jsonify(department_list), 200
     except Exception as e:
         return jsonify({'error':str(e)}),500
+
+@app.route('/api/<user_id>/department/<department_id>/role',methods= ['POST'])
+def create_role(user_id,department_id):
+    try:
+        role_date = request.json
+        role_name = role_date['name']
+        document_ref = db.collection('users').document(user_id).collection('departments').document(department_id).collection('roles').document()
+        document_ref.set({
+            'name':role_name,
+            'timestamp':firestore.SERVER_TIMESTAMP
+        })
+        return jsonify({'message': 'Role added successfully', 'role_id':document_ref.id}),200
+    except Exception as e:
+        return jsonify({'error': str(e)}),500
+    
+@app.route('/api/<user_id>/department/<department_id>/role', methods=['GET'])
+def get_role(user_id, department_id):
+    try:
+        document_ref = db.collection('users').document(user_id).collection('departments').document(department_id).collection('roles')
+        roles = document_ref.stream()
+        roles_list= []
+        for role in roles:
+            roles_list.append({**role.to_dict(), "id":role.id})
+        return jsonify(roles_list),200
+    except Exception as e:
+        return jsonify({'error': str(e)}),500
     
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
