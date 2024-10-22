@@ -184,6 +184,40 @@ def get_employee(user_id):
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+@app.route('/api/user/<user_id>/shifts', methods=['POST'])
+def create_shift(user_id):
+    try:
+        shift_data = request.json
+        department = shift_data.get('department')
+        role = shift_data.get('role')
+        date = shift_data.get('date')
+        start = shift_data.get('start')
+        end = shift_data.get('end')
+        employee = shift_data.get('employee')
+        shift_ref = db.collection('users').document(user_id).collection('shifts').document()
+        shift_ref.set({
+            'department': department,
+            'role': role,
+            'date': date,
+            'start': start,
+            'end': end,
+            'employee': employee
+        })
+        return jsonify({'message': 'shift created successfully', 'shiftid': shift_ref.id}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+@app.route('/api/<user_id>/shifts', methods=['GET'])
+def get_shifts(user_id):
+    try:
+        document_ref = db.collection('users').document(user_id).collection('shifts')
+        shifts = document_ref.stream()
+        shifts_list = []
+        for shift in shifts:
+            shifts_list.append({**shift.to_dict(), "id":shift.id})
+        return jsonify(shifts_list),200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 
     
 if __name__ == '__main__':
