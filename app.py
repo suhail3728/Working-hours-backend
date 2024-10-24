@@ -61,6 +61,7 @@ def create_user():
         address = user_data.get('address', '')  
         business_type = user_data.get('businessType', '')  
         num_of_employees = user_data.get('numberOfEmployees', 0)
+        business_id = user_data.get('businessId',0)
         
         # Print the extracted values
         print(f"Email: {email}")
@@ -80,6 +81,7 @@ def create_user():
             'positon': position,
             'address': address,
             'numofemploys': num_of_employees,
+            'business_id' :business_id,
             'timestamp': firestore.SERVER_TIMESTAMP
         })
         
@@ -194,6 +196,7 @@ def create_shift(user_id):
         start = shift_data.get('start')
         end = shift_data.get('end')
         employee = shift_data.get('employee')
+        place = shift_data.get('place')
         shift_ref = db.collection('users').document(user_id).collection('shifts').document()
         shift_ref.set({
             'department': department,
@@ -201,7 +204,8 @@ def create_shift(user_id):
             'date': date,
             'start': start,
             'end': end,
-            'employee': employee
+            'employee': employee,
+            'place': place,
         })
         return jsonify({'message': 'shift created successfully', 'shiftid': shift_ref.id}), 200
     except Exception as e:
@@ -217,6 +221,89 @@ def get_shifts(user_id):
         return jsonify(shifts_list),200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+    
+
+@app.route('/api/<user_id>/verify', methods=['GET'])
+def verify_user(user_id):
+    try:
+        email = request.args.get('email')
+        
+        if not email:
+            return jsonify({'error': 'Email is required'}), 400
+
+        owner_ref = db.collection('users').document(user_id)
+        owner_doc = owner_ref.get()
+        
+        if not owner_doc.exists:
+            return jsonify({'error': 'Invalid login key'}), 404
+        
+      
+        employees_ref = owner_ref.collection('employees')
+
+        query = employees_ref.where(field_path='email', op_string='==', value=email).limit(1)
+        
+        matching_employees = list(query.stream())
+        
+        if not matching_employees:
+            return jsonify({'error': 'No employee found with this email'}), 404
+        
+        employee = matching_employees[0]
+        employee_data = employee.to_dict()
+        
+        return jsonify({
+            'success': True,
+            'employeeId': employee.id,
+            'employeeData': {
+                'name': employee_data.get('name'),
+                'role': employee_data.get('role'),
+                'department_id': employee_data.get('department_id'),
+                'email': employee_data.get('email')
+            }
+        }), 200
+
+    except Exception as e:
+        print(f"Error in verify_user: {str(e)}")
+        return jsonify({'error': 'Internal server error'}), 500
+@app.route('/api/<user_id>/emplyShifts', methods=['GET'])
+def get_employee_shifts(user_id):
+    try:
+
+        employee_name = request.args.get('name')
+        
+        if not employee_name:
+            return jsonify({"error": "Employee name is required"}), 400
+
+
+        shifts_ref = db.collection('users').document(user_id).collection('shifts')
+        
+
+        shifts = shifts_ref.stream()
+        
+        matching_shifts = []
+        
+    
+        for shift in shifts:
+            shift_data = shift.to_dict()
+            
+
+            if ('employee' in shift_data and 
+                'name' in shift_data['employee'] and 
+                shift_data['employee']['name'] == employee_name):
+                
+ 
+                shift_data['shift_id'] = shift.id
+                matching_shifts.append(shift_data)
+        
+        return jsonify({
+            "shifts": matching_shifts,
+            "count": len(matching_shifts)
+        }), 200
+
+    except Exception as e:
+        return jsonify({
+            "error": "Failed to fetch shifts",
+            "message": str(e)
+        }),         
 
 
     
