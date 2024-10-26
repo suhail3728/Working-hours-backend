@@ -23,7 +23,7 @@ So I figured that out with the help of nested navigations from this article http
 
 ### How to use the useContext hook. 
 
-
+![image] (https://github.com/suhail3728/Working-hours-backend/blob/main/Screenshot%202024-10-25%20211559.png)
 
 So I first created a new file call AuthContext and we are exportinig two things from this file AuthContext and AuthProvider, these are the names give by me this can be any names. Here Auth context is the createContext function that the we import from react and AuthProvider is a functional component accepting a childern parameter. So I declared the userId and the setUser Id inside the AuthProvider and then the AuthProvider functional component is returning an AuthContext.provider where you can define the values that the childern of this can be used, in my case i have the userId and the setUser function inside the value so that any of the children element can use these. 
 
