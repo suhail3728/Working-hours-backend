@@ -19,15 +19,16 @@ So in react navigation happens by creating a navigation container that we can im
 
 So in my case I have two different types of stacks one is the AuthStack which have the screeens for user login or sign up and that is a Stack.Navigator and the other one is the userStack which contain the screens that the user will be using after authentication and that is a Tab.navigator where tab is a createBottomTabNavigator function that we import from @react-navigation/bottom-tabs. So I was troubling with moving how to move from the Stack navigator to the Tab navigator.
 
-So I figured that out with the help of nested navigations from this article https://reactnavigation.org/docs/nesting-navigators/. by using the tab navigator as a component inside the stack navigator. 
+So I figured that out with the help of nested navigations from this article https://reactnavigation.org/docs/nesting-navigators/. by using the tab navigator as a component inside the stack navigator. And the next challege was how to pass the user id after authentication from the auth stack to userStack. Here evethough i am using the my bottoms tabs in userStack inside a stack navigator component, both are different files and different stacks. So I was struggling to find a way and then I found the useContex hook.
+
+### How to use the useContext hook. 
+
+So I first created a new file call AuthContext and we are exportinig two things from this file AuthContext and AuthProvider, these are the names give by me this can be any names. Here Auth context is the createContext function that the we import from react and AuthProvider is a functional component accepting a childern parameter. So I declared the userId and the setUser Id inside the AuthProvider and then the AuthProvider functional component is returning an AuthContext.provider where you can define the values that the childern of this can be used, in my case i have the userId and the setUser function inside the value so that any of the children element can use these. 
+
+Then after creating the AuthContext file, I wrapped my Navigation container in the App.js file with the AuthProvider and then I imported the setUserId function in the usercreation page in the AuthStack and set the value for the userId and then when I move to the userStack I import the userId from the AuthContext and userthe userId. This is possible because as we wrapped our main navigator inside the Authprovider and we can set or use the userId value from any screens inside the children of the AuthProvider, this was very useful. 
 
 
 
-
-
-## 26rd September 
-
-So I learned how to navigate between screens in react-native, I searched a little bit about the type script, functional components,  while I was trying to understand why using jsx file instead of js and typescript is the super set of javascript where you can create your own type actually that is what I am using in the navigation too. Then I created how to create dynamic components like button in react native and passing the values as props. 
 
 
 
