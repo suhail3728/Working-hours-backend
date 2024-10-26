@@ -32,10 +32,9 @@ Then after creating the AuthContext file, I wrapped my Navigation container in t
 
 ### Resources that helped me : 
 
-https://www.youtube.com/watch?v=6RhOzQciVwI&list=PL4cUxeGkcC9hNokByJilPg5g9m2APUePI
-https://www.youtube.com/watch?v=-40TBdSRk6E
-https://reactnavigation.org/docs/nesting-navigators/.
-https://www.linkedin.com/learning/learning-react-native/react-navigation?u=104934506
+* Crawford, T. (2023, September 22). React Navigation - Nesting Navigators. YouTube. https://www.youtube.com/watch?v=6RhOzQciVwI
+* NetNinja (2020). React Context & Hooks. YouTube. https://www.youtube.com/watch?v=-40TBdSRk6E
+* React Navigation. (n.d.). Nesting navigators. Retrieved October 25, 2024, from https://reactnavigation.org/docs/nesting-navigators/
 
 
 
