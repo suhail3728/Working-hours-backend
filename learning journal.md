@@ -23,9 +23,19 @@ So I figured that out with the help of nested navigations from this article http
 
 ### How to use the useContext hook. 
 
+
+
 So I first created a new file call AuthContext and we are exportinig two things from this file AuthContext and AuthProvider, these are the names give by me this can be any names. Here Auth context is the createContext function that the we import from react and AuthProvider is a functional component accepting a childern parameter. So I declared the userId and the setUser Id inside the AuthProvider and then the AuthProvider functional component is returning an AuthContext.provider where you can define the values that the childern of this can be used, in my case i have the userId and the setUser function inside the value so that any of the children element can use these. 
 
 Then after creating the AuthContext file, I wrapped my Navigation container in the App.js file with the AuthProvider and then I imported the setUserId function in the usercreation page in the AuthStack and set the value for the userId and then when I move to the userStack I import the userId from the AuthContext and userthe userId. This is possible because as we wrapped our main navigator inside the Authprovider and we can set or use the userId value from any screens inside the children of the AuthProvider, this was very useful. 
+
+
+### Resources that helped me : 
+
+https://www.youtube.com/watch?v=6RhOzQciVwI&list=PL4cUxeGkcC9hNokByJilPg5g9m2APUePI
+https://www.youtube.com/watch?v=-40TBdSRk6E
+https://reactnavigation.org/docs/nesting-navigators/.
+https://www.linkedin.com/learning/learning-react-native/react-navigation?u=104934506
 
 
 
