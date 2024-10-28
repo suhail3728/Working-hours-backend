@@ -1,5 +1,8 @@
-
+# Project Overview
+# Installation Steps
 # Learning journal 
+# Contributions 
+
 ## Using React native use context. 
 
 useContext is a react native hook that helps with access the value of a parameter from any screen under this context without manually passing from each components. 
