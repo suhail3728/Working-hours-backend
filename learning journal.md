@@ -1,17 +1,28 @@
 Sure, here's the document content formatted as a Markdown file:
 
 # Project Overview
+- project description
 # Installation Steps
+ - how to install react-native
+ - how to install flask
+ - how to set up firebase account
 # Usage Instructions
-# Basic Contribution guidline
-# Learning journal 
+there will be two types of users one as a business owner/ manager or as a worker
+
+- owner using instruction
+- worker using instruction
+# Basic Contribution guideline
 # Contributions 
+
+# Learning journal 
+
+
 
 ## Using React native use context. 
 
-`useContext` is a react native hook that helps with access the value of a parameter from any screen under this context without manually passing from each components. 
+`useContext` is a react native hook that helps with accessing the value of a parameter from any screen under the same context without manually passing from each screens. 
 
-### react native hooks 
+### React native hooks 
 Hooks are special functions in the react that helps in manage the states in different componets. Like useState hook , helps to change the variable state. useEffect hooks the functions will be called when the screen is loaded or when the value of variable is changed. 
 
 While useing `useEffect(()=> randomFunctions(); {},[]); the codes in the the use effects runs the when the component loads. And if we are any variable inside the square bracket then the functions called inside the useEffect changes when the value of the variable changes like  `useEffect(()=> randomFunctions(); {},[userId]); , the codes inside the useEffect will be called whenever the value of the userId is changed.
