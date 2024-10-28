@@ -7,7 +7,7 @@
 
 ## Using React native use context. 
 
-`==useContext` is a react native hook that helps with access the value of a parameter from any screen under this context without manually passing from each components. 
+==useContext is a react native hook that helps with access the value of a parameter from any screen under this context without manually passing from each components. 
 
 ### react native hooks 
 Hooks are special functions in the react that helps in manage the states in different componets. Like useState hook , helps to change the variable state. useEffect hooks the functions will be called when the screen is loaded or when the value of variable is changed. 
