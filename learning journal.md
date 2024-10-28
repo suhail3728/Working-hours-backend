@@ -29,7 +29,25 @@ So in my case I have two different types of stacks one is the AuthStack which ha
 So I figured that out with the help of nested navigations from this article https://reactnavigation.org/docs/nesting-navigators/. by using the tab navigator as a component inside the stack navigator. And the next challege was how to pass the user id after authentication from the auth stack to userStack. Here evethough i am using the my bottoms tabs in userStack inside a stack navigator component, both are different files and different stacks. So I was struggling to find a way and then I found the `useContex` hook.
 
 ### How to use the `useContext` hook. 
-![Screenshot 2024-10-25 211559](https://github.com/suhail3728/Working-hours-backend/blob/main/Screenshot%202024-10-25%20211559.png)
+```javascript
+
+import React, { createContext, useState } from 'react';
+
+export const AuthContext = createContext();
+
+export const AuthProvider = ({ children }) => {
+  const [userId, setUserId] = useState(null);
+  const [emplyObject, setEmplyObject] = useState(null);
+  const [emplyFlag, setEmplyFlag] = useState(null);
+
+  return (
+    <AuthContext.Provider value={{ userId, setUserId, emplyObject, setEmplyObject, emplyFlag, setEmplyFlag }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
+
+```
 
 So I first created a new file call `AuthContext` and we are exportinig two things from this file `AuthContext` and `AuthProvider`, these are the names give by me this can be any names. Here `Auth context` is the `createContext` function that the we import from react and `AuthProvider` is a functional component accepting a `childern` parameter. So I declared the `userId` and the `setUser Id` inside the `AuthProvider` and then the `AuthProvider` functional component is returning an `AuthContext.provider` where you can define the values that the childern of this can be used, in my case i have the `userId` and the `setUser` function inside the `value` so that any of the children element can use these. 
 
