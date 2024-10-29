@@ -58,13 +58,4 @@ Employees hired by the business owner who need to view their work schedules.
 4. Owner creates and assigns shifts
 5. Workers register and access their schedules
 
-The improvements I made include:
-- Better hierarchical structure
-- Clearer separation of user types and their capabilities
-- Added sections for better navigation
-- Highlighted critical information (like email requirement)
-- Added a workflow summary
-- More consistent formatting
-- Better visual organization of information
 
-Would you like me to make any additional improvements or focus on specific aspects of the overview?
