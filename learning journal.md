@@ -1,6 +1,6 @@
 
 # Installation Steps
- ## how to install react-native
+ ## How to install react-native
 
  ### Required tools
 
@@ -33,7 +33,60 @@ npx react-native@latest init YourProjectName
 ```
 
 run this in the command prompt to create a new project and the react-native is ready to develop.
-   
+
+ ## How to install flask
+
+1. Install the latest version of the python 
+```
+https://www.python.org/downloads/
+```
+2. Create a virtual environment
+
+```
+python -m venv venv
+```
+
+3. Create a folder (Like MyflaskApp)  and install the necessary packages
+
+```
+pip install flask
+pip install flask-cors
+pip install python-dotenv
+pip install flask-cors
+```
+
+4. Wrap the application in the CORS( Cross-Origin Resource Sharing) for using the Flask app for the react-native project.
+```python
+from flask import Flask
+from flask_cors import CORS
+
+app = Flask(__name__)
+CORS(app)
+@app.route('/api/hey')
+def example_route():
+    return jsonify({"message": "Hey"})
+
+if __name__ == '__main__':
+    app.run(debug=True)
+```
+5. Run the app
+
+Run the following command in the flask project directory now the app is ready to use. We can check by giving the sample api created above.
+
+```
+python app.py
+```
+
+
+## SetUp the firebase account
+
+1. Create a project in firebase 
+
+```
+https://console.firebase.google.com/u/0/
+```
+2. Create a new web app
+   Create a new web app in the Firebase and copy the configurations and paste that in a config.js file react-native project and download the json that we receive at the end of creating the app and add that to the flask app.
 # Usage Instructions
 there will be two types of users one as a business owner/ manager or as a worker
 
