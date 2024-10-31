@@ -91,13 +91,26 @@ https://console.firebase.google.com/u/0/
 there will be two types of users one as a business owner/ manager or as a worker
 
 ## Owner user instructions:
-
+### 1.Creating new account:
 1. Press the button `I'm new to workingHours`.
 2. Press the `Create a team` button.
 3. Complete the four user creation steps to create the account and will be redirected to the homepage.
-4. Go to the options tab, which is the last tab in the bottom navigations with a hamburger icon.
-5. 
-6.  
+### 2.Creating new department:   
+1. Go to the options tab, which is the last tab in the bottom navigations with a hamburger icon.
+2. Select the Departments and roles section.
+3. Press the Edit button on the top right corner.
+4. Press the plus buttons to create departments.
+5. Press the nested plus buttons inside under each department to create new roles.
+   ### 3.Creating new team member:
+1. Go to the options tab, which is the last tab in the bottom navigations with a hamburger icon.
+2. Press the floating action plus button go to create new team members.
+3. Create a new team member by filling the input fields
+
+  ### 4. Creating new shifts:
+   1. Go to the shifts tab which is the second bottom tab.
+   2. Press the `Create new shift` button.
+   3. 
+
 - worker using instruction
 # Basic Contribution guideline
 # Contributions 
