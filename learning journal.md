@@ -119,7 +119,20 @@ The new hires need the business key from the owner user to verify and create the
 2. Press the business ID on the top under the profile. It will automatically copy the business Id and share this to the employees to join the team.
  
 
-- worker using instruction
+## Owner user instructions:
+
+### 1.Creating new account:
+You should receive the business key from the employer to create an account
+1. Press the button `I'm new to workingHours`.
+2. Press the `Join a team ` button.
+3. Provide the email and the business is provided by the employer and press the verify button.
+4. After verification create a password and will be redirected to the home page.
+
+### 2. View the shifts
+
+1. Go to the home page and will see the shifts assigned to you
+2. Go to the shifts tab which is the second tab to see the details of all the shifts in your working place.
+
 # Basic Contribution guideline
 # Contributions 
 
