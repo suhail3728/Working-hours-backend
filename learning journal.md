@@ -1,8 +1,39 @@
 
 # Installation Steps
- - how to install react-native
- - how to install flask
- - how to set up firebase account
+ ## how to install react-native
+
+ ### Required tools
+
+- Node.js
+
+We can download the node.js from the following we need version 16 or higher.
+  ```
+  https://nodejs.org/en
+```
+
+- Java Development Kit 
+
+We need the jdk version 17 which can be downloaded from the Oracle website.
+```
+https://www.oracle.com/java/technologies/downloads/
+```
+- Android Studio 
+
+Android studio can be downloaded from the link below. While installing this we will get the android sdk required for building android applications
+
+```
+https://developer.android.com/studio
+```
+
+
+- create new project 
+
+```
+npx react-native@latest init YourProjectName
+```
+
+run this in the command prompt to create a new project and the react-native is ready to develop.
+   
 # Usage Instructions
 there will be two types of users one as a business owner/ manager or as a worker
 
