@@ -192,6 +192,5 @@ You should receive the business key from the employer to create an account
 1. Go to the home page and will see the shifts assigned to you
 2. Go to the shifts tab which is the second tab to see the details of all the shifts in your working place.
 
-# Basic Contribution guideline
-# Contributions 
+
 
