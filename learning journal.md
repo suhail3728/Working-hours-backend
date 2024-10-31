@@ -109,7 +109,15 @@ there will be two types of users one as a business owner/ manager or as a worker
   ### 4. Creating new shifts:
    1. Go to the shifts tab which is the second bottom tab.
    2. Press the `Create new shift` button.
-   3. 
+   3. Create the new shift by filling the inputs.
+
+### Sharing the business key for the employees
+
+The new hires need the business key from the owner user to verify and create the account.
+
+1. Go to the options tab in the bottom navigations. That is the last tab with the hamburger icon.
+2. Press the business ID on the top under the profile. It will automatically copy the business Id and share this to the employees to join the team.
+ 
 
 - worker using instruction
 # Basic Contribution guideline
