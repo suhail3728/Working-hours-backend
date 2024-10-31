@@ -86,11 +86,18 @@ python app.py
 https://console.firebase.google.com/u/0/
 ```
 2. Create a new web app
-   Create a new web app in the Firebase and copy the configurations and paste that in a config.js file react-native project and download the json that we receive at the end of creating the app and add that to the flask app.
+   Create a new web app in the Firebase copy the configurations and paste that into a config.js file react-native project download the JSON that we receive at the end of creating the app and add that to the flask app.
 # Usage Instructions
 there will be two types of users one as a business owner/ manager or as a worker
 
-- owner using instruction
+## Owner user instructions:
+
+1. Press the button `I'm new to workingHours`.
+2. Press the `Create a team` button.
+3. Complete the four user creation steps to create the account and will be redirected to the homepage.
+4. Go to the options tab, which is the last tab in the bottom navigations with a hamburger icon.
+5. 
+6.  
 - worker using instruction
 # Basic Contribution guideline
 # Contributions 
