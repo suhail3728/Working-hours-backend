@@ -1,7 +1,4 @@
-Sure, here's the document content formatted as a Markdown file:
 
-# Project Overview
-- project description
 # Installation Steps
  - how to install react-native
  - how to install flask
