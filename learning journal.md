@@ -117,12 +117,16 @@ This will create a new requirements.txt file in the root directory and will list
 9. Add the firebase configurations:
     So inside our project folder which has the app.py, requirements.txt, and the venv folder, we will create a new folder called `config` and inside the config folder upload the serviceAccountKey.json file from your computer that has the firebase configurations.
 10. Create new web app:
-     a. Go to the web tab
-     b. Click `Add a new web app`.
-     c. The create the web app by choosing the latest python version.
+    
+     - Go to the web tab
+  - Click `Add a new web app`.
+     - The create the web app by choosing the latest python version.
+     - 
 11. Update the WSGI file:
+
     Under the web app there is a link to modify the WSGI file:
-    a. Here change the path to the app folder. like `/home/perfectSky/mysite/venv` in my case as my user name is perfectSky
-    b. Change the virtual environment path. There will be a variable `VIRTUALENV = '/home/perfectSky/mysite/venv'`.
+    
+    - Here change the path to the app folder. like `/home/perfectSky/mysite/venv` in my case as my user name is perfectSky
+    - Change the virtual environment path. There will be a variable `VIRTUALENV = '/home/perfectSky/mysite/venv'`.
 
 Thats all the setups just click save go back to the web tab, press reload and the our backend is live now.
