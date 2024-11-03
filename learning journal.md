@@ -56,3 +56,19 @@ Then after creating the `AuthContext` file, I wrapped my Navigation container in
 * Crawford, T. (2023, September 22). React Navigation - Nesting Navigators. YouTube. https://www.youtube.com/watch?v=6RhOzQciVwI
 * NetNinja (2020). React Context & Hooks. YouTube. https://www.youtube.com/watch?v=-40TBdSRk6E
 * React Navigation. (n.d.). Nesting navigators. Retrieved October 25, 2024, from https://reactnavigation.org/docs/nesting-navigators/
+
+
+## How to deploy the flask app in pythonanywhere.com
+
+pyhthonanywhere.com helps to deploy different Python apps like Flask, and Django for free. We will be having some restriction like not able to change the url and will be having a data limit of 500mb. However, it works great.
+
+1. Create a new account in pythonanywhere.com
+2. Now we can see our dashboard and then go to the file section and create new folder that can be anything.
+3. Now create a virtual environment inside the newly created folder. For that we have to go to the console tab and create a new bash console. Make sure we are inside the project directory and then run this command
+
+   ```python
+   python -m venv venv
+   ```
+
+   Python Land. (n.d.). Python venv: How to create, activate, deactivate, and delete. Retrieved from https://python.land/virtual-environments/virtualenv
+   
