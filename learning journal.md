@@ -119,7 +119,7 @@ This will create a new requirements.txt file in the root directory and will list
 10. Create new web app:
     
      - Go to the web tab
-     - Click `Add a new web app`.
+     - Click `Add a new web app` Button
      - The create the web app by choosing the latest python version.
        
 11. Update the WSGI file:
