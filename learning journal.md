@@ -69,14 +69,19 @@ pyhthonanywhere.com helps to deploy different Python apps like Flask, and Django
    ```python
    python -m venv venv
    ```
-This will create a virtual environment inside the folder. I wish to show the findings about what is a python virtual environment
+This will create a virtual environment inside the folder. I wish to share my understanding of about what is a python virtual environment
 ### What is a python virtual environment:
 
 Imagine we are an artist with different projects. 
-* Without vitual environment we will be having a big room with all the tools that can be used to any projects.
-* But with a virtual environment we will be having separate rooms for each projects having the necessary tools required for that project only. Like little organized. 
+* Without vitual environment we will be having a big room with all the tools that can be used to any project.
+* But with a virtual environment we will be having separate rooms for each projects having the necessary tools required for that project only. Like a little organized. 
 
 So by creating a virtual environment to a project will be like creating a room for that project with only the necessary tools. This helps to avoid the package conflicts problems and do not commit that to the git hub as it might not work on the others and might be having security issues. 
 
 Python Land. (n.d.). Python venv: How to create, activate, deactivate, and delete. Retrieved from https://python.land/virtual-environments/virtualenv
-   
+
+4. So now after creating we can activate the venv by the following command, note that the venv is the name that we given to our virtual environment that can be anything
+
+   ```python
+source venv/bin/activate
+   ```
