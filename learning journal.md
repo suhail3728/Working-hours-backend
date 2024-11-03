@@ -66,7 +66,7 @@ pyhthonanywhere.com helps to deploy different Python apps like Flask, and Django
 2. Now we can see our dashboard and then go to the file section and create new folder that can be anything.
 3. Now create a virtual environment inside the newly created folder. For that we have to go to the console tab and create a new bash console. Make sure we are inside the project directory and then run this command
 
-   ```python
+   ```
    python -m venv venv
    ```
 This will create a virtual environment inside the folder. I wish to share my understanding of about what is a python virtual environment
@@ -82,6 +82,47 @@ Python Land. (n.d.). Python venv: How to create, activate, deactivate, and delet
 
 4. So now after creating we can activate the venv by the following command, note that the venv is the name that we given to our virtual environment that can be anything
 
-   ```python
+```python
 source venv/bin/activate
+```
+5. Create requirements.txt file, with all the required packages.
+
+So in your computer, that is where we were running the flask app as local host we have run the following command in the flask app root directory
+
+```python
+
+pip freeze > requirements.txt
+
+```
+
+This will create a new requirements.txt file in the root directory and will list all the packages required for this project.
+
+6. Remove the debug codes from your project:
+
+    So in your computer before exporting the app.py file that is where we have all our apis we have to remove the code
+
    ```
+   if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0')
+   ```
+
+   We were using this for the debug mode now we are switching to the production mode with do not need this it is a best practice for some security reasons.
+
+7. Now in the pythonanywhere inside the our project folder that is in the files tab press the button `upload a file` and then upload the files `app.py` and the `requirements.txt` file  from your local machine.
+8. Install the required packages to the virtual environment:
+   ```python
+   pip install -r requirements.txt
+   ```
+   So by the above command in the base we will be installing all of our necessary packages to our virtual environment.
+9. Add the firebase configurations:
+    So inside our project folder which has the app.py, requirements.txt, and the venv folder, we will create a new folder called `config` and inside the config folder upload the serviceAccountKey.json file from your computer that has the firebase configurations.
+10. Create new web app:
+     a. Go to the web tab
+     b. Click `Add a new web app`.
+     c. The create the web app by choosing the latest python version.
+11. Update the WSGI file:
+    Under the web app there is a link to modify the WSGI file:
+    a. Here change the path to the app folder. like `/home/perfectSky/mysite/venv` in my case as my user name is perfectSky
+    b. Change the virtual environment path. There will be a variable `VIRTUALENV = '/home/perfectSky/mysite/venv'`.
+
+Thats all the setups just click save go back to the web tab, press reload and the our backend is live now.
