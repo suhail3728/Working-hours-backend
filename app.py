@@ -1,9 +1,10 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import firebase_admin
+import logging
 from firebase_admin import credentials, firestore
 
-
+logging.basicConfig(level=logging.INFO)
 
 # Initialize Firebase
 cred = credentials.Certificate("config/serviceAccountKey.json")
@@ -264,35 +265,34 @@ def verify_user(user_id):
     except Exception as e:
         print(f"Error in verify_user: {str(e)}")
         return jsonify({'error': 'Internal server error'}), 500
+
 @app.route('/api/<user_id>/emplyShifts', methods=['GET'])
 def get_employee_shifts(user_id):
     try:
-
-        employee_name = request.args.get('name')
         
+        employee_name = request.args.get('name')
         if not employee_name:
             return jsonify({"error": "Employee name is required"}), 400
 
-
         shifts_ref = db.collection('users').document(user_id).collection('shifts')
         
-
-        shifts = shifts_ref.stream()
+        shifts = shifts_ref.where('employee.name', '==', employee_name).stream()
         
         matching_shifts = []
         
-    
         for shift in shifts:
             shift_data = shift.to_dict()
-            
-
-            if ('employee' in shift_data and 
-                'name' in shift_data['employee'] and 
-                shift_data['employee']['name'] == employee_name):
-                
- 
-                shift_data['shift_id'] = shift.id
-                matching_shifts.append(shift_data)
+            formatted_shift = {
+                'shift_id': shift.id,
+                'date': shift_data.get('date', ''),
+                'start': shift_data.get('start', ''),
+                'end': shift_data.get('end', ''),
+                'place': shift_data.get('place', ''),
+                'department': shift_data.get('department', {}),
+                'employee': shift_data.get('employee', {}),
+                'role': shift_data.get('role', {})
+            }
+            matching_shifts.append(formatted_shift)
         
         return jsonify({
             "shifts": matching_shifts,
@@ -303,7 +303,7 @@ def get_employee_shifts(user_id):
         return jsonify({
             "error": "Failed to fetch shifts",
             "message": str(e)
-        }),         
+        }), 500         
 
 
     
