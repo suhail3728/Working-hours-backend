@@ -154,7 +154,11 @@ npm install firebase
 npm install @react-native-async-storage/async-storage
 ```
 Here the firebase auth have all the required packages related to the firebase so you don't have to add the `firebase/auth` package seprately.
+
 ### How I used this in my project
+
+This is a how i used these packages in my project you can see the details in `src/config/firebase.js` file in React native project repository. This is really simple, I can help you to understand how this works.
+
 ```javascript
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
@@ -178,7 +182,7 @@ const analytics = getAnalytics(app);
 export{app, auth, db}
 });
 ```
-This is a how i used these packages in my project you can see the details in `src/config/firebase.js` file in React native project repository. This is really simple, I can help you to understand how this works.
+
 
 ## How It Works
 
