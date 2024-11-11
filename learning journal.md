@@ -131,3 +131,9 @@ This will create a new requirements.txt file in the root directory and will list
 Thats all the setups just click save go back to the web tab, press reload and the our backend is live now.
 
 </details>
+
+<details>
+  <summary>  How to persist the user information after login in React Natvie </summary>
+
+  hey
+</details>
