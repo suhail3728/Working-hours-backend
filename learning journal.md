@@ -1,7 +1,7 @@
 # Learning journal 
 
 <details>
-<summary>Using React native use context</summary>
+<summary>  Using React native use context</summary>
 
 
 `useContext` is a react native hook that helps with accessing the value of a parameter from any screen under the same context without manually passing from each screens. 
