@@ -4,7 +4,6 @@
 <summary>Using React native use context</summary>
 
 
-
 `useContext` is a react native hook that helps with accessing the value of a parameter from any screen under the same context without manually passing from each screens. 
 
 ### React native hooks 
@@ -57,9 +56,11 @@ Then after creating the `AuthContext` file, I wrapped my Navigation container in
 </details>
 
 <details>
+
+  
 <summary>How to deploy the flask app in pythonanywhere.com</summary>
 
-pyhthonanywhere.com helps to deploy different Python apps like Flask, and Django for free. We will be having some restriction like not able to change the url and will be having a data limit of 500mb. However, it works great.
+`pyhthonanywhere.com` helps to deploy different Python apps like Flask, and Django for free. We will be having some restriction like not able to change the url and will be having a data limit of 500mb. However, it works great.
 
 1. Create a new account in pythonanywhere.com
 2. Now we can see our dashboard and then go to the file section and create new folder that can be anything.
