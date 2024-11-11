@@ -157,7 +157,15 @@ Here the firebase auth have all the required packages related to the firebase so
 
 ### How I used this in my project
 
-This is a how i used these packages in my project you can see the details in `src/config/firebase.js` file in React native project repository. This is really simple, I can help you to understand how this works.
+#### 1. Wrap the firebase app like below while initializing the auth:
+
+   ```javascript
+   const auth = initializeAuth(app, {
+    persistence: getReactNativePersistence(AsyncStorage),
+  });
+  ```
+
+This is how I changed the config file in my project you can see the details in `src/config/firebase.js` file in React native project repository. 
 
 ```javascript
 import { initializeApp } from "firebase/app";
@@ -182,27 +190,9 @@ const analytics = getAnalytics(app);
 export{app, auth, db}
 });
 ```
+So now when the the authentication happen the authentication token will be stored on the device locally. This is all the we need to do to make the user information stays even when the user closes the app. 
 
-
-## How It Works
-
-1. **AsyncStorage Integration**
-   - Firebase uses React Native's AsyncStorage to store authentication tokens locally on the device
-   - These tokens are encrypted and securely stored
-   - AsyncStorage is an asynchronous, persistent, key-value storage system
-
-2. **Authentication Flow**
-   - When a user logs in or signs up, Firebase creates an authentication token
-   - This token is automatically stored in AsyncStorage
-   - On app restart, Firebase checks AsyncStorage for valid authentication tokens
-   - If a valid token exists, the user remains authenticated
-
-3. **Token Management**
-   - Firebase automatically handles token refresh
-   - Expired tokens are automatically renewed when possible
-   - Invalid tokens are cleared during logout
-
-## Usage Example
+#### 2. Notify the firebase-auth when the authentication changes:
 
 ```javascript
 import { onAuthStateChanged } from 'firebase/auth';
@@ -220,42 +210,18 @@ onAuthStateChanged(auth, (user) => {
 });
 ```
 
-## Best Practices
+So here we are using the function `onAuthStateChanged` that will helps notifiy the `firebase-auth` when authentication changes that is at the time of login or signup and sigout. I have another documentation on explaining how authentication happens using firebase auth.
+   
 
-1. **Authentication State Management**
-   - Always use `onAuthStateChanged` listener to detect authentication state
-   - Don't rely on local state alone to track authentication status
-   - Handle edge cases like token expiration
 
-2. **Security Considerations**
-   - Never store sensitive information in AsyncStorage directly
-   - Let Firebase handle all token management
-   - Implement proper logout functionality to clear stored tokens
+## In conclusion:
 
-3. **Error Handling**
-   - Implement proper error handling for authentication state changes
-   - Handle cases where persistence might fail
-   - Provide fallback mechanisms for authentication failures
+   - When a user logs in or signs up, Firebase creates an authentication token and inform firbase auth
+   - This token is automatically stored in AsyncStorage
+   - On app restart, Firebase checks AsyncStorage for valid authentication tokens
+   - If a valid token exists, the user remains authenticated
+   - If the user sign out remove the authentication token and inform firebase auth
 
-## Common Issues and Solutions
 
-1. **Token Persistence Issues**
-   - Ensure AsyncStorage permissions are properly set
-   - Check if device storage isn't full
-   - Verify AsyncStorage is properly linked in your React Native project
 
-2. **Authentication State Syncing**
-   - Use `onAuthStateChanged` instead of manual checks
-   - Handle authentication state changes globally
-   - Implement proper loading states while checking authentication
 
-## Testing Persistence
-
-To test if persistence is working correctly:
-
-1. Log in to the application
-2. Force close the application
-3. Reopen the application
-4. Verify that the user is still authenticated
-5. Check if protected routes/screens are accessible
-</details>
