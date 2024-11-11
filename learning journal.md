@@ -3,7 +3,7 @@
 <details>
 <summary>  Using React native use context</summary>
 
-
+## Using React native use context
 `useContext` is a react native hook that helps with accessing the value of a parameter from any screen under the same context without manually passing from each screens. 
 
 ### React native hooks 
@@ -59,6 +59,8 @@ Then after creating the `AuthContext` file, I wrapped my Navigation container in
 
   
 <summary>How to deploy the flask app in pythonanywhere.com</summary>
+
+## How to deploy the flask app in pythonanywhere.com
 
 `pyhthonanywhere.com` helps to deploy different Python apps like Flask, and Django for free. We will be having some restriction like not able to change the url and will be having a data limit of 500mb. However, it works great.
 
@@ -133,7 +135,104 @@ Thats all the setups just click save go back to the web tab, press reload and th
 </details>
 
 <details>
-  <summary>  How to persist the user information after login in React Natvie </summary>
+  <summary>  How to keep the user information even after closing the application React Natvie </summary>
 
-  hey
+## How to keep the user information after sigin in or sigup in the local storage
+
+So we are using Firebase Authentication persistence. This is the function allows users to remain authenticated even after closing and reopening the app. This means users don't need to log in again every time they use the application.
+
+### Required Dependencies
+```javascript
+import { initializeAuth, getReactNativePersistence } from 'firebase/auth';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+```
+
+We need these two libraries that we can get from npm by the following command
+
+```cmd
+npm install firebase
+npm install @react-native-async-storage/async-storage
+```
+Here the firebase auth have all the required packages related to the firebase so you don't have to add the `firebase/auth` package seprately.
+### Basic Setup
+```javascript
+const auth = initializeAuth(app, {
+    persistence: getReactNativePersistence(AsyncStorage),
+});
+```
+
+## How It Works
+
+1. **AsyncStorage Integration**
+   - Firebase uses React Native's AsyncStorage to store authentication tokens locally on the device
+   - These tokens are encrypted and securely stored
+   - AsyncStorage is an asynchronous, persistent, key-value storage system
+
+2. **Authentication Flow**
+   - When a user logs in or signs up, Firebase creates an authentication token
+   - This token is automatically stored in AsyncStorage
+   - On app restart, Firebase checks AsyncStorage for valid authentication tokens
+   - If a valid token exists, the user remains authenticated
+
+3. **Token Management**
+   - Firebase automatically handles token refresh
+   - Expired tokens are automatically renewed when possible
+   - Invalid tokens are cleared during logout
+
+## Usage Example
+
+```javascript
+import { onAuthStateChanged } from 'firebase/auth';
+
+// Listen for authentication state changes
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is signed in, redirect to home screen
+    // The user object will be available even after app restart
+    navigation.navigate('Home');
+  } else {
+    // No user is signed in, show login screen
+    navigation.navigate('Login');
+  }
+});
+```
+
+## Best Practices
+
+1. **Authentication State Management**
+   - Always use `onAuthStateChanged` listener to detect authentication state
+   - Don't rely on local state alone to track authentication status
+   - Handle edge cases like token expiration
+
+2. **Security Considerations**
+   - Never store sensitive information in AsyncStorage directly
+   - Let Firebase handle all token management
+   - Implement proper logout functionality to clear stored tokens
+
+3. **Error Handling**
+   - Implement proper error handling for authentication state changes
+   - Handle cases where persistence might fail
+   - Provide fallback mechanisms for authentication failures
+
+## Common Issues and Solutions
+
+1. **Token Persistence Issues**
+   - Ensure AsyncStorage permissions are properly set
+   - Check if device storage isn't full
+   - Verify AsyncStorage is properly linked in your React Native project
+
+2. **Authentication State Syncing**
+   - Use `onAuthStateChanged` instead of manual checks
+   - Handle authentication state changes globally
+   - Implement proper loading states while checking authentication
+
+## Testing Persistence
+
+To test if persistence is working correctly:
+
+1. Log in to the application
+2. Force close the application
+3. Reopen the application
+4. Verify that the user is still authenticated
+5. Check if protected routes/screens are accessible
 </details>
