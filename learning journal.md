@@ -1,10 +1,9 @@
-
-
 # Learning journal 
 
+<details>
+<summary>Using React native use context</summary>
 
 
-## Using React native use context. 
 
 `useContext` is a react native hook that helps with accessing the value of a parameter from any screen under the same context without manually passing from each screens. 
 
@@ -17,7 +16,7 @@ These hooks can only be called inside a functional component in react. So a func
 
 These hooks are very useful in my project, I use the useState to assign values to the variable. useEffects are used to show the ui according to the respective users. And the useContext was the one that helped me to pass parameters between different type of Stacks in my project.
 
-### How it was useful in my project. 
+### How it was useful in my project
 
 So in react navigation happens by creating a navigation container that we can import from the package react-navigation and By creating Stack , where Stack is a `createStackNavigator` function we can import from react navigation. So we can create different `Stack.Navigator` inside the navigation container. And inside the `Stack.Navigators` we can use our screens by using `Stack.screen`.
 
@@ -25,9 +24,9 @@ So in my case I have two different types of stacks one is the AuthStack which ha
 
 So I figured that out with the help of nested navigations from this article https://reactnavigation.org/docs/nesting-navigators/. by using the tab navigator as a component inside the stack navigator. And the next challege was how to pass the user id after authentication from the auth stack to userStack. Here evethough i am using the my bottoms tabs in userStack inside a stack navigator component, both are different files and different stacks. So I was struggling to find a way and then I found the `useContex` hook.
 
-### How to use the `useContext` hook. 
-```javascript
+### How to use the `useContext` hook
 
+```javascript
 import React, { createContext, useState } from 'react';
 
 export const AuthContext = createContext();
@@ -43,22 +42,22 @@ export const AuthProvider = ({ children }) => {
     </AuthContext.Provider>
   );
 };
-
 ```
 
 So I first created a new file call `AuthContext` and we are exportinig two things from this file `AuthContext` and `AuthProvider`, these are the names give by me this can be any names. Here `Auth context` is the `createContext` function that the we import from react and `AuthProvider` is a functional component accepting a `childern` parameter. So I declared the `userId` and the `setUser Id` inside the `AuthProvider` and then the `AuthProvider` functional component is returning an `AuthContext.provider` where you can define the values that the childern of this can be used, in my case i have the `userId` and the `setUser` function inside the `value` so that any of the children element can use these. 
 
 Then after creating the `AuthContext` file, I wrapped my Navigation container in the `App.js` file with the `AuthProvider` and then I imported the `setUserId` function in the usercreation page in the `AuthStack` and set the value for the `userId` and then when I move to the `userStack` I import the `userId` from the `AuthContext` and userthe `userId`. This is possible because as we wrapped our main navigator inside the `AuthProvider` and we can set or use the `userId` value from any screens inside the children of the `AuthProvider`, this was very useful. 
 
-
-### Resources that helped me : 
+### Resources that helped me
 
 * Crawford, T. (2023, September 22). React Navigation - Nesting Navigators. YouTube. https://www.youtube.com/watch?v=6RhOzQciVwI
 * NetNinja (2020). React Context & Hooks. YouTube. https://www.youtube.com/watch?v=-40TBdSRk6E
 * React Navigation. (n.d.). Nesting navigators. Retrieved October 25, 2024, from https://reactnavigation.org/docs/nesting-navigators/
 
+</details>
 
-## How to deploy the flask app in pythonanywhere.com
+<details>
+<summary>How to deploy the flask app in pythonanywhere.com</summary>
 
 pyhthonanywhere.com helps to deploy different Python apps like Flask, and Django for free. We will be having some restriction like not able to change the url and will be having a data limit of 500mb. However, it works great.
 
@@ -70,6 +69,7 @@ pyhthonanywhere.com helps to deploy different Python apps like Flask, and Django
    python -m venv venv
    ```
 This will create a virtual environment inside the folder. I wish to share my understanding of about what is a python virtual environment
+
 ### What is a python virtual environment:
 
 Imagine we are an artist with different projects. 
@@ -90,9 +90,7 @@ source venv/bin/activate
 So in your computer, that is where we were running the flask app as local host we have run the following command in the flask app root directory
 
 ```python
-
 pip freeze > requirements.txt
-
 ```
 
 This will create a new requirements.txt file in the root directory and will list all the packages required for this project.
@@ -130,3 +128,5 @@ This will create a new requirements.txt file in the root directory and will list
     - Change the virtual environment path. There will be a variable `VIRTUALENV = '/home/perfectSky/mysite/venv'`.
 
 Thats all the setups just click save go back to the web tab, press reload and the our backend is live now.
+
+</details>
