@@ -242,6 +242,10 @@ So here we are using the function `onAuthStateChanged` that will helps notifiy t
 
 ## How to use Firebase Authentication in React Native
 
+### Why we need to authenticate:
+
+So for the security of the user, if we are storing the user information like password and email and if someone else gain access to our database that can manipulate the other user accounts or get the user information. So here we are saving the email in our database but have no access to the password that is stored in firebase authentications. Which is secure for the user.
+
 So If you have a Firebase app and if you are in the console tab:
 
 1. On the left navigation you will see two tabs `Authentication` and Firestore database
@@ -393,9 +397,17 @@ Here you can see how I am using the component `onAuthStateChanged` to navigate b
 
 * Firebase Documentation. (n.d.). Get Started with Firebase Authentication on Websites. Retrieved from https://firebase.google.com/docs/auth/web/start
 * React Navigation. (n.d.). Authentication flows. Retrieved from https://reactnavigation.org/docs/auth-flow
-* The Net Ninja. (2021). Firebase Auth in React Native. YouTube. https://www.youtube.com/watch?v=ql4J6SpLXZA
+* Matt with Matt. (2021). Firebase Auth in React Native. YouTube. https://www.youtube.com/watch?v=ql4J6SpLXZA
 * Firebase Setup Guide. (n.d.). Adding Firebase to your React Native project. Retrieved from https://firebase.google.com/docs/react-native/setup
 
+</details>
+
+<details>
+  <summary>Other courses that helped me to do the project</summary>
+
+- Nick Walter. (2019). Flask Essential learning [Online course]. Retrieved from LinkedIn Learning. [https://www.linkedin.com/learning](https://www.linkedin.com/learning/flask-essential-training-2019/demo-project-overview?u=104934506)
+- Shaun Wassell. (2020). Firebase: Stop reinventing the wheel [Online course]. Retrieved from LinkedIn Learning.[ https://www.linkedin.com/learning](https://www.linkedin.com/learning/firebase-essential-training/firebase-stop-reinventing-the-wheel?u=104934506)
+- Samer Buna. (2020). Working with React Native [Online course]. Retrieved from LinkedIn Learning. [https://www.linkedin.com/learning](https://www.linkedin.com/learning/react-native-essential-training/working-with-react-native?u=104934506)
 </details>
 
 
