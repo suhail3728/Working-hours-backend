@@ -21,7 +21,7 @@ So in react navigation happens by creating a navigation container that we can im
 
 So in my case I have two different types of stacks one is the AuthStack which have the screeens for user login or sign up and that is a `Stack.Navigator` and the other one is the userStack which contain the screens that the user will be using after authentication and that is a `Tab.navigator` where tab is a `createBottomTabNavigator` function that we import from `@react-navigation/bottom-tabs`. So I was troubling with moving how to move from the Stack navigator to the Tab navigator.
 
-So I figured that out with the help of nested navigations from this article https://reactnavigation.org/docs/nesting-navigators/. by using the tab navigator as a component inside the stack navigator. And the next challege was how to pass the user id after authentication from the auth stack to userStack. Here evethough i am using the my bottoms tabs in userStack inside a stack navigator component, both are different files and different stacks. So I was struggling to find a way and then I found the `useContex` hook.
+So I figured that out with the help of nested navigations from this article https://reactnavigation.org/docs/nesting-navigators/. by using the tab navigator as a component inside the stack navigator. And the next challenge was how to pass the user id after authentication from the auth stack to userStack. Here even though i am using the my bottoms tabs in userStack inside a stack navigator component, both are different files and different stacks. So I was struggling to find a way and then I found the `useContext` hook.
 
 ### How to use the `useContext` hook
 
@@ -180,9 +180,74 @@ this is the important step, we import the auth package and wrap our app in Fireb
 
 Now our app is ready to do the authentication. The authentication happens in two places:
 
-- sign in
-- sign up
+- ### Sign in :
 
+  - During the signing in we use `signInWithEmailAndPassword` this component that is provided by the firebase auth package.
+  - This component checks for an user and create a auth token if the credentials are correct.
+  - In my project:
+
+In my `SignInScreen.js`, I created a sign-in function using Firebase's authentication:
+
+```javascript
+const handleSignIn = async () => {
+  try {
+    setIsLoading(true);
+    const userCredential = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    setUserId(userCredential.user.uid);
+  } catch (error) {
+    setError('Invalid email or password');
+  } finally {
+    setIsLoading(false);
+  }
+};
+```
+    
+   
+- ### Sign up :
+  
+   - During sign-up, we are using `createUserWithEmailAndPassword` this component from the firebase-auth package.
+   - This component will check if the user is providing the correct email format and register the user email and password in the authentication tab in the firebase console and create an authentication token.
+   -  In my project:
+   
+
+In `UserCreation4.js`, I implemented the sign-up functionality:
+
+```javascript
+const handleCreateUser = async () => {
+  try {
+    setLoading(true);
+    const userCredential = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    const user = userCredential.user;
+    setUserId(user.uid);
+    
+    // Create additional user data in database
+    await createUser({
+      userId: user.uid,
+      name,
+      business,
+      mobileNumber,
+      position: selectedPosition,
+      address,
+      businessType,
+      numberOfEmployees: selectedNumOfEmployees
+    });
+  } catch (error) {
+    Alert.alert('Error', error.message);
+  } finally {
+    setLoading(false);
+  }
+};
+```
+
+ 
 ### Understanding Firebase Authentication
 
 Firebase Authentication works by managing the entire authentication flow:
@@ -257,40 +322,6 @@ const handleSignIn = async () => {
 };
 ```
 
-#### 3. User Registration:
-
-In `UserCreation4.js`, I implemented the sign-up functionality:
-
-```javascript
-const handleCreateUser = async () => {
-  try {
-    setLoading(true);
-    const userCredential = await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-    const user = userCredential.user;
-    setUserId(user.uid);
-    
-    // Create additional user data in database
-    await createUser({
-      userId: user.uid,
-      name,
-      business,
-      mobileNumber,
-      position: selectedPosition,
-      address,
-      businessType,
-      numberOfEmployees: selectedNumOfEmployees
-    });
-  } catch (error) {
-    Alert.alert('Error', error.message);
-  } finally {
-    setLoading(false);
-  }
-};
-```
 
 ### What I learned:
 
