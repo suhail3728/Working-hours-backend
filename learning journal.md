@@ -143,7 +143,7 @@ So If you have a Firebase app and if you are in the console tab:
 
 1. On the left navigation you will see two tabs `Authentication` and Firestore database
 2. Go to the authentication `Signin method` and click the `Add new provider`. Here you can choose any provider i have chosen the email and password my project.
-3. Now change the configurations of the where you configured the Firebase database in your project.
+3. Could you change the configurations of the file where you set up the Firebase database in your project?
  
 
 ```javascript
@@ -284,7 +284,7 @@ const Main = () => {
   }, []);
 }
 ```
-Here you can see how I am using the component `onAuthStateChanged` to navig
+Here you can see how I am using the component `onAuthStateChanged` to navigate between screens.
 
 ### Resources that helped me
 
