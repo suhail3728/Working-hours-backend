@@ -134,7 +134,7 @@ Here I am showing the code from two pages
  - `src/screens/EmployeeCreat.js` This where the usercreation section is shown from.
  - `App.js` (that is in the root of the react-native project) this is where the navigation between two stacks are shown.
  - Note that a simplified version of the code is provided for helping the reader to understand the logic quickly.
- - The for further details on the api calling , home screen, api function visit the 'src/services/api.js` , `src/screens/Home.js` and `app.py in this repository respectively.
+ - The for further details on the api calling , home screen, api function visit the `src/services/api.js` , `src/screens/Home.js` and `app.py in this repository respectively.
 
 </details>
 
