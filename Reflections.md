@@ -124,9 +124,17 @@ This is how we see the user information properly after creating a user in this c
 
 
 
-#### In conlusion
+### In conlusion
 
 This is just one instance where learning the javaScript helped me to solve an issue in my project. Moreover, this project's fronend is build in `React Native`, which is a javascript framework. So with a good understanding of the javascript it was helpful for me to learn this frame work for the project.
+
+#### For further reference
+
+Here I am showing the code from two pages
+ - `src/screens/EmployeeCreat.js` This where the usercreation section is shown from.
+ - `App.js` this is where the navigation between two stacks are shown.
+ - Note that a simplified version of the code is provided for helping the reader to understand the logic quickly.
+ - The for for ther details on the api calling , home screen, api function visit the 'src/services/api.js` , `src/screens/Home.js and `app.py in this repository respectively.
 
 </details>
 
