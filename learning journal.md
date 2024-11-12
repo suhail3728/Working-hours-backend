@@ -134,6 +134,109 @@ Thats all the setups just click save go back to the web tab, press reload and th
 
 </details>
 
+
+<details>
+  <summary>  How to keep the user information even after closing the application React Natvie </summary>
+
+## How to keep the user information after sigin in or sigup in the local storage
+
+So we are using Firebase Authentication persistence. This is the function allows users to remain authenticated even after closing and reopening the app. This means users don't need to log in again every time they use the application.
+
+### Required Dependencies
+```javascript
+import { initializeAuth, getReactNativePersistence } from 'firebase/auth';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+```
+
+We need these two libraries that we can get from npm by the following command
+
+```cmd
+npm install firebase
+npm install @react-native-async-storage/async-storage
+```
+Here the firebase auth have all the required packages related to the firebase so you don't have to add the `firebase/auth` package seprately.
+
+### How I used this in my project
+
+#### 1. Wrap the firebase app like below while initializing the auth:
+
+   ```javascript
+   const auth = initializeAuth(app, {
+    persistence: getReactNativePersistence(AsyncStorage),
+  });
+  ```
+
+This is how I changed the config file in my project you can see the details in `src/config/firebase.js` file in React native project repository. 
+
+```javascript
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import { initializeAuth, getReactNativePersistence } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+const firebaseConfig = {
+  // our firbase config that we get from the firbase not sharing due to security reasons
+  };
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const auth = initializeAuth(app, {
+    persistence: getReactNativePersistence(AsyncStorage),
+  });
+const analytics = getAnalytics(app);
+
+export{app, auth, db}
+});
+```
+So now when the the authentication happen the authentication token will be stored on the device locally. This is all the we need to do to make the user information stays even when the user closes the app. 
+
+#### 2. Notify the firebase-auth when the authentication changes:
+
+```javascript
+import { onAuthStateChanged } from 'firebase/auth';
+
+// Listen for authentication state changes
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is signed in, redirect to home screen
+    // The user object will be available even after app restart
+    navigation.navigate('Home');
+  } else {
+    // No user is signed in, show login screen
+    navigation.navigate('Login');
+  }
+});
+```
+
+So here we are using the function `onAuthStateChanged` that will helps notifiy the `firebase-auth` when authentication changes that is at the time of login or signup and sigout. I have another documentation on explaining how authentication happens using firebase auth.
+   
+
+
+## In conclusion:
+
+   - When a user logs in or signs up, Firebase creates an authentication token and inform firbase auth
+   - This token is automatically stored in AsyncStorage
+   - On app restart, Firebase checks AsyncStorage for valid authentication tokens
+   - If a valid token exists, the user remains authenticated
+   - If the user sign out remove the authentication token and inform firebase auth
+   - 
+## Resources that helped me 
+
+
+- Firebase. Authentication State Persistence. Retrieved November 11, 2024, from https://firebase.google.com/docs/auth/web/auth-state-persistence
+
+- Adrian Twarog.(2020) AsynStorage React-native | AsyncStorage Tutorial. YouTube. https://youtu.be/2Oz-OLB8FQQ
+
+- Jorge Vergara. (2021). Understanding the firebae auth persistence. YouTube. https://youtu.be/PRGHWgTydyQ](https://www.youtube.com/watch?v=si5fhwYVakk
+
+
+
+</details>
+
+
 <details>
 <summary>Firebase Authentication in React Native</summary>
 
@@ -295,102 +398,6 @@ Here you can see how I am using the component `onAuthStateChanged` to navigate b
 
 </details>
 
-<details>
-  <summary>  How to keep the user information even after closing the application React Natvie </summary>
-
-## How to keep the user information after sigin in or sigup in the local storage
-
-So we are using Firebase Authentication persistence. This is the function allows users to remain authenticated even after closing and reopening the app. This means users don't need to log in again every time they use the application.
-
-### Required Dependencies
-```javascript
-import { initializeAuth, getReactNativePersistence } from 'firebase/auth';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-```
-
-We need these two libraries that we can get from npm by the following command
-
-```cmd
-npm install firebase
-npm install @react-native-async-storage/async-storage
-```
-Here the firebase auth have all the required packages related to the firebase so you don't have to add the `firebase/auth` package seprately.
-
-### How I used this in my project
-
-#### 1. Wrap the firebase app like below while initializing the auth:
-
-   ```javascript
-   const auth = initializeAuth(app, {
-    persistence: getReactNativePersistence(AsyncStorage),
-  });
-  ```
-
-This is how I changed the config file in my project you can see the details in `src/config/firebase.js` file in React native project repository. 
-
-```javascript
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { initializeAuth, getReactNativePersistence } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-
-const firebaseConfig = {
-  // our firbase config that we get from the firbase not sharing due to security reasons
-  };
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-const auth = initializeAuth(app, {
-    persistence: getReactNativePersistence(AsyncStorage),
-  });
-const analytics = getAnalytics(app);
-
-export{app, auth, db}
-});
-```
-So now when the the authentication happen the authentication token will be stored on the device locally. This is all the we need to do to make the user information stays even when the user closes the app. 
-
-#### 2. Notify the firebase-auth when the authentication changes:
-
-```javascript
-import { onAuthStateChanged } from 'firebase/auth';
-
-// Listen for authentication state changes
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    // User is signed in, redirect to home screen
-    // The user object will be available even after app restart
-    navigation.navigate('Home');
-  } else {
-    // No user is signed in, show login screen
-    navigation.navigate('Login');
-  }
-});
-```
-
-So here we are using the function `onAuthStateChanged` that will helps notifiy the `firebase-auth` when authentication changes that is at the time of login or signup and sigout. I have another documentation on explaining how authentication happens using firebase auth.
-   
-
-
-## In conclusion:
-
-   - When a user logs in or signs up, Firebase creates an authentication token and inform firbase auth
-   - This token is automatically stored in AsyncStorage
-   - On app restart, Firebase checks AsyncStorage for valid authentication tokens
-   - If a valid token exists, the user remains authenticated
-   - If the user sign out remove the authentication token and inform firebase auth
-   - 
-## Resources that helped me 
-
-
-- Firebase. Authentication State Persistence. Retrieved November 11, 2024, from https://firebase.google.com/docs/auth/web/auth-state-persistence
-
-- Adrian Twarog.(2020) AsynStorage React-native | AsyncStorage Tutorial. YouTube. https://youtu.be/2Oz-OLB8FQQ
-
-- Jorge Vergara. (2021). Understanding the firebae auth persistence. YouTube. https://youtu.be/PRGHWgTydyQ](https://www.youtube.com/watch?v=si5fhwYVakk
 
 
 
