@@ -135,6 +135,195 @@ Thats all the setups just click save go back to the web tab, press reload and th
 </details>
 
 <details>
+<summary>Firebase Authentication in React Native</summary>
+
+## How to use Firebase Authentication in React Native
+
+So If you have a Firebase app and if you are in the console tab:
+
+1. On the left navigation you will see two tabs `Authentication` and Firestore database
+2. Go to the authentication `Signin method` and click the `Add new provider`. Here you can choose any provider i have chosen the email and password my project.
+3. Now change the configurations of the where you configured the Firebase database in your project.
+ 
+
+```javascript
+// Import required Firebase functions
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import { getFirestore } from 'firebase/firestore';
+
+// Firebase configuration object
+const firebaseConfig = {
+  // Configuration details from Firebase console
+  // (apiKey, authDomain, projectId, etc.)
+  // Not shared due to security reasons
+};
+
+// Initialize Firebase services
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// Initialize Auth with persistence
+const auth = initializeAuth(app);
+const analytics = getAnalytics(app);
+
+// Export initialized services
+export { app, auth, db }
+```
+
+This is how I changed my config file. The file is in `src/config/firebase.js` in the react native project folder.
+
+```javascript
+const auth = initializeAuth(app);
+```
+this is the important step, we import the auth package and wrap our app in Firebase auth.
+
+Now our app is ready to do the authentication. The authentication happens in two places:
+
+- sign in
+- sign up
+
+### Understanding Firebase Authentication
+
+Firebase Authentication works by managing the entire authentication flow:
+1. When users sign up or sign in, Firebase creates unique authentication tokens
+2. These tokens are used to maintain user sessions
+3. Firebase provides methods to track authentication state changes
+4. It integrates well with other Firebase services like Firestore
+
+The main components we use from Firebase Authentication are:
+* `createUserWithEmailAndPassword`: For new user registration
+* `signInWithEmailAndPassword`: For existing user login
+* `onAuthStateChanged`: To listen to authentication state changes
+* `auth`: The main authentication instance
+
+### Setting up Firebase in the project
+
+### How I implemented it in my project
+
+#### 1. Setting up the Authentication Flow:
+
+In my `App.js`, I implemented a structure that manages the authentication state:
+
+```javascript
+const App = () => {
+  return (
+    <AuthProvider>
+      <Main />
+    </AuthProvider>
+  );
+};
+
+const Main = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const { setUserId } = useContext(AuthContext);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        setUserId(user.uid);
+        setIsAuthenticated(true);
+      } else {
+        setIsAuthenticated(false);
+      }
+      setIsLoading(false);
+    });
+
+    return unsubscribe;
+  }, []);
+}
+```
+
+#### 2. Implementing Sign In:
+
+In my `SignInScreen.js`, I created a sign-in function using Firebase's authentication:
+
+```javascript
+const handleSignIn = async () => {
+  try {
+    setIsLoading(true);
+    const userCredential = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    setUserId(userCredential.user.uid);
+  } catch (error) {
+    setError('Invalid email or password');
+  } finally {
+    setIsLoading(false);
+  }
+};
+```
+
+#### 3. User Registration:
+
+In `UserCreation4.js`, I implemented the sign-up functionality:
+
+```javascript
+const handleCreateUser = async () => {
+  try {
+    setLoading(true);
+    const userCredential = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    const user = userCredential.user;
+    setUserId(user.uid);
+    
+    // Create additional user data in database
+    await createUser({
+      userId: user.uid,
+      name,
+      business,
+      mobileNumber,
+      position: selectedPosition,
+      address,
+      businessType,
+      numberOfEmployees: selectedNumOfEmployees
+    });
+  } catch (error) {
+    Alert.alert('Error', error.message);
+  } finally {
+    setLoading(false);
+  }
+};
+```
+
+### What I learned:
+
+1. **Firebase Setup:**
+   - The importance of keeping Firebase configuration secure
+   - How to properly initialize multiple Firebase services
+   - Using persistence for better user experience
+
+2. **Authentication State Management:**
+   - Firebase's `onAuthStateChanged` is very useful for maintaining authentication state
+   - It automatically handles token refreshing and validation
+   - We can use it to switch between authenticated and non-authenticated views
+
+3. **Error Handling:**
+   - Firebase provides detailed error messages for authentication failures
+   - It's important to handle loading states during authentication operations
+   - Try-catch blocks are essential for managing authentication errors
+
+4. **Context Integration:**
+   - Using Context API with Firebase Authentication helps share user state across the app
+   - It eliminates the need to pass user information through props
+   - Makes it easier to access user information in deeply nested components
+
+### Resources that helped me
+
+* Firebase Documentation. (n.d.). Get Started with Firebase Authentication on Websites. Retrieved from https://firebase.google.com/docs/auth/web/start
+* React Navigation. (n.d.). Authentication flows. Retrieved from https://reactnavigation.org/docs/auth-flow
+* The Net Ninja. (2021). Firebase Auth in React Native. YouTube. https://www.youtube.com/watch?v=ql4J6SpLXZA
+* Firebase Setup Guide. (n.d.). Adding Firebase to your React Native project. Retrieved from https://firebase.google.com/docs/react-native/setup
+
+</details>
+
+<details>
   <summary>  How to keep the user information even after closing the application React Natvie </summary>
 
 ## How to keep the user information after sigin in or sigup in the local storage
