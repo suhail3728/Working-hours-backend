@@ -221,7 +221,15 @@ So here we are using the function `onAuthStateChanged` that will helps notifiy t
    - On app restart, Firebase checks AsyncStorage for valid authentication tokens
    - If a valid token exists, the user remains authenticated
    - If the user sign out remove the authentication token and inform firebase auth
+   - 
+## Resources that helped me 
 
+
+- Firebase. Authentication State Persistence. Retrieved November 11, 2024, from https://firebase.google.com/docs/auth/web/auth-state-persistence
+
+- Adrian Twarog.(2020) AsynStorage React-native | AsyncStorage Tutorial. YouTube. https://youtu.be/2Oz-OLB8FQQ
+
+- Jorge Vergara. (2021). Understanding the firebae auth persistence. YouTube. https://youtu.be/PRGHWgTydyQ](https://www.youtube.com/watch?v=si5fhwYVakk
 
 
 
