@@ -182,7 +182,7 @@ Now our app is ready to do the authentication. The authentication happens in two
 
 - ### Sign in :
 
-  - During the signing in we use `signInWithEmailAndPassword` this component that is provided by the firebase auth package.
+  - During the signing in we use `signInWithEmailAndPassword` the component is provided by the firebase auth package.
   - This component checks for an user and create a auth token if the credentials are correct.
   - In my project:
 
@@ -248,27 +248,12 @@ const handleCreateUser = async () => {
 ```
 
  
-### Understanding Firebase Authentication
+### How it helped me
 
-Firebase Authentication works by managing the entire authentication flow:
-1. When users sign up or sign in, Firebase creates unique authentication tokens
-2. These tokens are used to maintain user sessions
-3. Firebase provides methods to track authentication state changes
-4. It integrates well with other Firebase services like Firestore
+1. It helped me to create a user account and login to the user account securely without any authentication from my side.
+2. It helped me to go from authentication screen to the homescreen if the user is authenticated for that the component `onAuthStatChanged` will get the state of the authentication and we go to different screen according to the state. 
 
-The main components we use from Firebase Authentication are:
-* `createUserWithEmailAndPassword`: For new user registration
-* `signInWithEmailAndPassword`: For existing user login
-* `onAuthStateChanged`: To listen to authentication state changes
-* `auth`: The main authentication instance
-
-### Setting up Firebase in the project
-
-### How I implemented it in my project
-
-#### 1. Setting up the Authentication Flow:
-
-In my `App.js`, I implemented a structure that manages the authentication state:
+This my `App.js`. file
 
 ```javascript
 const App = () => {
@@ -299,51 +284,7 @@ const Main = () => {
   }, []);
 }
 ```
-
-#### 2. Implementing Sign In:
-
-In my `SignInScreen.js`, I created a sign-in function using Firebase's authentication:
-
-```javascript
-const handleSignIn = async () => {
-  try {
-    setIsLoading(true);
-    const userCredential = await signInWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-    setUserId(userCredential.user.uid);
-  } catch (error) {
-    setError('Invalid email or password');
-  } finally {
-    setIsLoading(false);
-  }
-};
-```
-
-
-### What I learned:
-
-1. **Firebase Setup:**
-   - The importance of keeping Firebase configuration secure
-   - How to properly initialize multiple Firebase services
-   - Using persistence for better user experience
-
-2. **Authentication State Management:**
-   - Firebase's `onAuthStateChanged` is very useful for maintaining authentication state
-   - It automatically handles token refreshing and validation
-   - We can use it to switch between authenticated and non-authenticated views
-
-3. **Error Handling:**
-   - Firebase provides detailed error messages for authentication failures
-   - It's important to handle loading states during authentication operations
-   - Try-catch blocks are essential for managing authentication errors
-
-4. **Context Integration:**
-   - Using Context API with Firebase Authentication helps share user state across the app
-   - It eliminates the need to pass user information through props
-   - Makes it easier to access user information in deeply nested components
+Here you can see how I am using the component `onAuthStateChanged` to navig
 
 ### Resources that helped me
 
