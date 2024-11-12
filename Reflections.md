@@ -48,7 +48,7 @@ const handleCreateUser = async () => {
 ```
 
 - The function `createUserWithEmailAndPassword()` is provided by firebase-auth package. This create a user in firebase authentication and create an authentication token
-- The function `createUser() is an api calling function defined by me in for calling the api in `src/service/api.js` file.
+- The function `createUser()` is an api calling function defined by me in for calling the api in `src/service/api.js` file.
 
 2.  Below is a simple version of my home screen that switch the navigation based on the users authentication state.
 
