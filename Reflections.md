@@ -155,11 +155,11 @@ So, at the first I did'nt had any particular reason to for choosing a colors or 
 
 Below are some screens from my project:
 
-![User interfaces](https://github.com/suhail3728/Working-hours-backend/blob/main/images/ui1.jpeg)
-
-![User interfaces](https://github.com/suhail3728/Working-hours-backend/blob/main/images/ui2.jpeg)
-
-![User interfaces](https://github.com/suhail3728/Working-hours-backend/blob/main/images/ui2.jpeg)
+<div style="display: flex; justify-content: space-between;">
+    <img src="images/ui1.jpeg" alt="Image 1" width="200" , height="400">
+    <img src="images/ui2.jpeg" alt="Image 2" width="200" height="400">
+    <img src="images/ui3.jpeg" alt="Image 3" width="200" height="400">
+</div>
 
 
 
