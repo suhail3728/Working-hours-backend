@@ -146,11 +146,13 @@ Here I am showing the code from two pages
 
 ##  Ability to create user friendly UI's
 
-The course: UI/UX
+The courses: UI/UX, DGL 309
 
 So I was a student in UI/UX in the last year. And this course helped me alot to create effiecient user interfaces and make me able to under stand the UI design principles like typography, color theory, layout.
 
-So, at the first I did'nt had any particular reason to for choosing a colors or placing a ui element. But, after taking this course. I it help me to understand how to organise the content and design the components with consistency and reducting the cognitive loads of the user.
+And the course 309 gave me detailed understanding ot the color theory and layout principles.
+
+So, at the first I did'nt had any particular reason to for choosing a colors or placing a ui element. But, after taking these courses. I it help me to understand how to organise the content and design the components with consistency and reducting the cognitive loads of the user.
 
 
 Below are some screens from my project:
@@ -165,8 +167,38 @@ And in my project I have seperate folder `src/components`for all the component l
 
 ### In conclusion:
 
-With the help of the course UI/UX , I am able to design the interfaces in my application properly
+With the help of the courses , I am able to understand  UI design principles like typography, color theory and  layouts that helped me to design the interfaces in my application properly and to organize the contents effectivly.
 
+</details>
+
+<details>
+
+<summary> Able to Use Adobe XD Efficently </summary>
+
+## Able to Use Adobe XD Efficently 
+
+The course: UI/UX. 
+
+So in this course I was taught how to create wireframes and layout effectively and simply using adobe xd. There are lot of techniques to make it easier like repeat grid, where use can repeat the components that you want into prefered number of row and columns. 
+
+
+Below are the wireframes that I have created for the project
+
+- [Lo-fi wire frame](https://xd.adobe.com/view/316b1a7e-4e04-4166-b7e9-26aa7a32dd17-6438/screen/9703718e-d55e-4349-944e-01d4d5a9fe57) 
+
+So for the feature complete presentation, I have used adobe xd to show different major steps in the application assuming that it will be helpful instead of showing the real application. Below are the Adobe xd flows that I have created to demonstrate how to perform major tasks in my application
+
+- [Business account creation steps] (https://xd.adobe.com/view/abb0e76d-e4fd-458e-b585-2d8bc9181396-fee3/)
+
+- [Create a team] (https://xd.adobe.com/view/1a8a80d6-b7f6-4275-9451-88ea0c8a156e-4fd9/)
+
+- [Add new member] (https://xd.adobe.com/view/4dc9c77d-6271-4362-b72d-6c5bbf94aa9f-189a/)
+
+- [Create shifts] (https://xd.adobe.com/view/1841303b-927a-41ed-8807-d8e9e4c176de-4d12/)
+
+- [Share the business id] (https://xd.adobe.com/view/dee9373a-f801-47ba-85bf-b83bbe82d085-8bba/)
+
+- [Employee account creation] (https://xd.adobe.com/view/3a8b806c-12ca-4421-94b9-82308b9518a8-6fd8/)
 
 </details>
 
