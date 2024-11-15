@@ -139,3 +139,29 @@ Here I am showing the code from two pages
 </details>
 
 
+<details>
+
+<summary> Ability to create user friendly UI's</summary>
+
+
+##  Ability to create user friendly UI's
+
+The course: UI/UX
+
+So I was a student in UI/UX in the last year. And this course helped me alot to create effiecient user interfaces.
+
+So, at the first I did'nt had any particular reason to for choosing a colors or placing a ui element. But, after taking this course. I it help me to understand how to organise the content and design the components with consistency and reducting the cognitive loads of the user.
+
+
+Below are some screens from my project:
+
+![User interfaces](https://github.com/suhail3728/Working-hours-backend/blob/main/images/ui1.jpeg)
+
+![User interfaces](https://github.com/suhail3728/Working-hours-backend/blob/main/images/ui2.jpeg)
+
+![User interfaces](https://github.com/suhail3728/Working-hours-backend/blob/main/images/ui2.jpeg)
+
+
+
+</details>
+
