@@ -139,6 +139,72 @@ Here I am showing the code from two pages
 </details>
 
 
+
+
+
+
+<details> 
+
+<summary>Ability to self learn technologies</summary>
+
+Because of the all the dgl courses that I have taken , I was able to gain the skill to learn new technologies and I  created an entire full-stack application using the technologies `React-native`, `Flask`and `Firebase`.
+
+* So these three technologies was new to me at the beginning of this course but by continous efforts of self learning I am able to add these new tecnologies to my techinical skill set. 
+
+* So by enrolling to this program I now I am able to learn new technologies by my self. I think that is an important skill that helped me to do this project and will be moving forwards. 
+
+```python
+
+@app.route('/api/<user_id>/verify', methods=['GET'])
+def verify_user(user_id):
+    try:
+        email = request.args.get('email')
+        
+        if not email:
+            return jsonify({'error': 'Email is required'}), 400
+
+        owner_ref = db.collection('users').document(user_id)
+        owner_doc = owner_ref.get()
+        
+        if not owner_doc.exists:
+            return jsonify({'error': 'Invalid login key'}), 404
+        
+      
+        employees_ref = owner_ref.collection('employees')
+
+        query = employees_ref.where(field_path='email', op_string='==', value=email).limit(1)
+        
+        matching_employees = list(query.stream())
+        
+        if not matching_employees:
+            return jsonify({'error': 'No employee found with this email'}), 404
+        
+        employee = matching_employees[0]
+        employee_data = employee.to_dict()
+        
+        return jsonify({
+            'success': True,
+            'employeeId': employee.id,
+            'employeeData': {
+                'name': employee_data.get('name'),
+                'role': employee_data.get('role'),
+                'department_id': employee_data.get('department_id'),
+                'email': employee_data.get('email')
+            }
+        }), 200
+
+    except Exception as e:
+        print(f"Error in verify_user: {str(e)}")
+        return jsonify({'error': 'Internal server error'}), 500
+
+```
+
+This is a cool api function that I have created to verify an employee during the account creation. 
+
+So without the strong programming foundation from the course `cps-100` or without builing a router in `Introduction to php`. I will never be able to create an api like this.
+</details>
+
+
 <details>
 
 <summary> Ability to create user friendly UI's</summary>
@@ -299,12 +365,7 @@ src/
 </details>
 
 
-<details>
 
-<summary>  Project managemet techniques </summary>
- </details>
-
-</details>
 
 
 
