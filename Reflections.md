@@ -148,19 +148,24 @@ Here I am showing the code from two pages
 
 The course: UI/UX
 
-So I was a student in UI/UX in the last year. And this course helped me alot to create effiecient user interfaces.
+So I was a student in UI/UX in the last year. And this course helped me alot to create effiecient user interfaces and make me able to under stand the UI design principles like typography, color theory, layout.
 
 So, at the first I did'nt had any particular reason to for choosing a colors or placing a ui element. But, after taking this course. I it help me to understand how to organise the content and design the components with consistency and reducting the cognitive loads of the user.
 
 
 Below are some screens from my project:
 
-<div style="display: flex; justify-content: space-between;">
+<div style="display: flex; justify-content: space-between; width:100vw">
     <img src="images/ui1.jpeg" alt="Image 1" width="200" , height="400">
     <img src="images/ui2.jpeg" alt="Image 2" width="200" height="400">
     <img src="images/ui3.jpeg" alt="Image 3" width="200" height="400">
 </div>
 
+And in my project I have seperate folder `src/components`for all the component like  buttons, title and others to make UI consistent and Effective.
+
+### In conclusion:
+
+With the help of the course UI/UX , I am able to design the interfaces in my application properly
 
 
 </details>
