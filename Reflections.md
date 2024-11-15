@@ -188,7 +188,7 @@ Below are the wireframes that I have created for the project
 
 So for the feature complete presentation, I have used adobe xd to show different major steps in the application assuming that it will be helpful instead of showing the real application. Below are the Adobe xd flows that I have created to demonstrate how to perform major tasks in my application
 
-- [Business account creation steps] (https://xd.adobe.com/view/abb0e76d-e4fd-458e-b585-2d8bc9181396-fee3/)
+- [Business account creation steps](https://xd.adobe.com/view/abb0e76d-e4fd-458e-b585-2d8bc9181396-fee3/)
 
 - [Create a team](https://xd.adobe.com/view/1a8a80d6-b7f6-4275-9451-88ea0c8a156e-4fd9/)
 
@@ -201,4 +201,12 @@ So for the feature complete presentation, I have used adobe xd to show different
 - [Employee account creation](https://xd.adobe.com/view/3a8b806c-12ca-4421-94b9-82308b9518a8-6fd8/)
 
 </details>
+
+## In conclusion
+
+Learning Adobe XD through this UI/UX course has significantly enhanced my prototyping and wireframing capabilities. The tool's powerful features like repeat grid helped streamline my workflow and allowed me to create consistent, professional layouts efficiently. Through creating various wireframes and interactive flows for the business account management system, I gained practical experience in translating complex user journeys into clear, visual representations.
+
+
+
+
 
