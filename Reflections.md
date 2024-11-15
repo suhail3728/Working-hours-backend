@@ -200,12 +200,111 @@ So for the feature complete presentation, I have used adobe xd to show different
 
 - [Employee account creation](https://xd.adobe.com/view/3a8b806c-12ca-4421-94b9-82308b9518a8-6fd8/)
 
-</details>
 
 ## In conclusion
 
-Learning Adobe XD through this UI/UX course has significantly enhanced my prototyping and wireframing capabilities. The tool's powerful features like repeat grid helped streamline my workflow and allowed me to create consistent, professional layouts efficiently. Through creating various wireframes and interactive flows for the business account management system, I gained practical experience in translating complex user journeys into clear, visual representations.
+Learning Adobe XD through this UI/UX course has enhanced my prototyping and wireframing capabilities. The tool's powerful features helped streamline my workflow and allowed me to create consistent, professional layouts efficiently. 
 
+</details>
+
+
+
+<details> <summary>How to use Git branching properly</summary>
+
+## How to use Git branching properly
+
+ The course : DGL: 104 App development foundation.
+
+
+Through this project, I gained practical experience in using Git version control effectively, particularly in branching, creating pull requests, merging. One of the key features I worked on was the sign-in functionality, which required careful version control to ensure code stability.
+
+- [Git branch for sign in](https://github.com/suhail3728/WorkingHours/tree/Sign-in-screen) 
+
+This the git branch that I used to create the sign in page seperately. 
+
+Here you can see the git commits only for the sign in page creation. This is really helpful as it seperate the commits from the rest of the commits.
+
+This is also helpful not to develop any new feauters with some risks in the main branch and develop in an Isolated branch and verify that everything is workig perfectly and then to create  a pull request and merge that to the mains branch.
+</details>
+
+
+<details>
+<summary> Refactoring techiques</summary>
+
+The course: Introduction to php.
+
+So according to the course we where watching a youtube video from a chanel [laracast](https://www.bing.com/videos/riverview/relatedvideo?&q=laracast+introduction+to+php&qpvt=laracast+introduction+to+php&mid=116E749B94A6CA9A9A2B116E749B94A6CA9A9A2B&mmscn=mtsc&aps=0&FORM=VRDGAR). This is a 11 hours video starting from the basics of php to advanced steps. 
+
+So three things that was useful for me in this project because of this course
+
+ * To organize the entire code into different categories according to the type of the code
+
+ ```
+├ App.js
+src/
+├── assets/
+│   └── images/
+├── components/
+├── config/
+├── constants/
+├── navigation/
+├── screens/
+└── services/
+ ```
+
+ This is my code structure that here I categorized the the codes into different section according to the type of code like screens, configuration for the database configurations ect.
+
+
+ * To create components that is reusable in the code. 
+
+ ```javascript
+
+ export const DepartmentButton = ({
+  IconName,
+  IconColor,
+  IconBackgroundColor,
+  title,
+  onPress,
+  containerStyle,
+  iconContainerStyle,
+  textStyle,
+  IconSize = 22,
+}) => {
+  return (
+    <TouchableOpacity 
+      style={[styles.departmentButton, containerStyle]} 
+      onPress={onPress}
+    >
+      <View style={[styles.departmentContent]}>
+        <View style={[styles.departmentIconContainer, 
+          { backgroundColor: IconBackgroundColor },
+          iconContainerStyle
+        ]}>
+          <Ionicon
+            name={IconName}
+            color={IconColor}
+            size={IconSize}
+          />
+        </View>
+        <Text style={[styles.departmentText, textStyle]}>{title}</Text>
+      </View>
+    </TouchableOpacity>
+  );
+};
+
+ ```
+
+ This a custom button that I have created in my project, here we can pass the parameters and reuse the button instead of writing the code by itself again and againg. This was really helpful for me that I learned from this course.
+
+</details>
+
+
+<details>
+
+<summary>  Project managemet techniques </summary>
+ </details>
+
+</details>
 
 
 
