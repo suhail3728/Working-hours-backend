@@ -190,15 +190,15 @@ So for the feature complete presentation, I have used adobe xd to show different
 
 - [Business account creation steps] (https://xd.adobe.com/view/abb0e76d-e4fd-458e-b585-2d8bc9181396-fee3/)
 
-- [Create a team] (https://xd.adobe.com/view/1a8a80d6-b7f6-4275-9451-88ea0c8a156e-4fd9/)
+- [Create a team](https://xd.adobe.com/view/1a8a80d6-b7f6-4275-9451-88ea0c8a156e-4fd9/)
 
-- [Add new member] (https://xd.adobe.com/view/4dc9c77d-6271-4362-b72d-6c5bbf94aa9f-189a/)
+- [Add new member](https://xd.adobe.com/view/4dc9c77d-6271-4362-b72d-6c5bbf94aa9f-189a/)
 
-- [Create shifts] (https://xd.adobe.com/view/1841303b-927a-41ed-8807-d8e9e4c176de-4d12/)
+- [Create shifts](https://xd.adobe.com/view/1841303b-927a-41ed-8807-d8e9e4c176de-4d12/)
 
-- [Share the business id] (https://xd.adobe.com/view/dee9373a-f801-47ba-85bf-b83bbe82d085-8bba/)
+- [Share the business id](https://xd.adobe.com/view/dee9373a-f801-47ba-85bf-b83bbe82d085-8bba/)
 
-- [Employee account creation] (https://xd.adobe.com/view/3a8b806c-12ca-4421-94b9-82308b9518a8-6fd8/)
+- [Employee account creation](https://xd.adobe.com/view/3a8b806c-12ca-4421-94b9-82308b9518a8-6fd8/)
 
 </details>
 
