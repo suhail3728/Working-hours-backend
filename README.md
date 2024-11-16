@@ -1,6 +1,6 @@
-    # Project Overview
+   # Project Overview
 A team management solution designed for business organizations to efficiently organize and manage their workforce. The platform serves two distinct user types: Business Owners and Workers.
-
+<details>
 <summary> User documentation</summary>
 
 
