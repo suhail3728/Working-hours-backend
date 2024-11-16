@@ -6,12 +6,7 @@ A team management solution designed for business organizations to efficiently or
 <summary> User documentation</summary>
 
 
-<details>
 
-<summary>Developer documentation</summary>
-
-
-</details>
 
 ## User Types
 ### 1. Business Owner
@@ -69,6 +64,11 @@ Employees hired by the business owner who need to view their work schedules.
 5. Workers register and access their schedules
 
 </details>
+
+
+<details>
+
+<summary>Developer documentation</summary>
 
 
 # Installation Steps
@@ -159,8 +159,17 @@ https://console.firebase.google.com/u/0/
 ```
 2. Create a new web app
    Create a new web app in the Firebase copy the configurations and paste that into a config.js file react-native project download the JSON that we receive at the end of creating the app and add that to the flask app.
+
+
+</details>
+
+
+<details> 
+
+<summary> Usage Instructions</summary>
+
 # Usage Instructions
-there will be two types of users one as a business owner/ manager or as a worker
+T here will be two types of users one as a business owner/ manager or as a worker
 
 ## Owner user instructions:
 ### 1.Creating new account:
@@ -191,7 +200,7 @@ The new hires need the business key from the owner user to verify and create the
 2. Press the business ID on the top under the profile. It will automatically copy the business Id and share this to the employees to join the team.
  
 
-## Owner user instructions:
+## Employee user instructions:
 
 ### 1.Creating new account:
 You should receive the business key from the employer to create an account
@@ -207,3 +216,4 @@ You should receive the business key from the employer to create an account
 
 
 
+</details>
