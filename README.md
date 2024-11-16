@@ -1,6 +1,18 @@
 # Project Overview
 A team management solution designed for business organizations to efficiently organize and manage their workforce. The platform serves two distinct user types: Business Owners and Workers.
 
+<details>
+
+<summary> User documentation</summary>
+
+
+<details>
+
+<summary>Developer documentation</summary>
+
+
+</details>
+
 ## User Types
 ### 1. Business Owner
 The primary administrator who manages the business and team operations.
@@ -56,6 +68,7 @@ Employees hired by the business owner who need to view their work schedules.
 4. Owner creates and assigns shifts
 5. Workers register and access their schedules
 
+</details>
 
 
 # Installation Steps
