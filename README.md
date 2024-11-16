@@ -161,6 +161,9 @@ https://console.firebase.google.com/u/0/
    Create a new web app in the Firebase copy the configurations and paste that into a config.js file react-native project download the JSON that we receive at the end of creating the app and add that to the flask app.
 
 
+Thats it ready to build the application.
+
+
 </details>
 
 
