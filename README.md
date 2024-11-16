@@ -156,7 +156,8 @@ python app.py
 ```
 https://console.firebase.google.com/u/0/
 ```
-2. Create a new web app
+2. Create a new web app 
+
    Create a new web app in the Firebase copy the configurations and paste that into a config.js file react-native project download the JSON that we receive at the end of creating the app and add that to the flask app.
 
 
@@ -212,7 +213,5 @@ You should receive the business key from the employer to create an account
 
 1. Go to the home page and will see the shifts assigned to you
 2. Go to the shifts tab which is the second tab to see the details of all the shifts in your working place.
-
-
 
 </details>
